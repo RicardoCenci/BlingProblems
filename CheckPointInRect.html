@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas{
+            border: 1px solid black;
+        }
+        body{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .controls{
+            position: absolute;
+            top: 0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id='canvas' width="250" height="250"></canvas>
+    <p>Your point <span id="result"></span> inside the rectangle</p>
+    <section class="controls">
+        <div class="vertice1">
+            <p>Vertice 1</p>
+            <label for="v1.x">X</label>
+            <input type="number" id="v1x">
+            <label for="v1.y">Y</label>
+            <input type="number" id="v1y">
+        </div>
+        <div class="vertice2">
+            <p>Vertice 2</p>
+            <label for="v2.x">X</label>
+            <input type="number" id="v2x">
+            <label for="v2.y">Y</label>
+            <input type="number" id="v2y">
+        </div>
+
+        <div class="point">
+            <p>Point</p>
+            <label for="p.x">X</label>
+            <input type="number" id="px">
+            <label for="p.y">Y</label>
+            <input type="number" id="py">
+        </div>
+    </section>
+
+</body>
+<script>
+//     Receba duas coordenadas (x,y) representando os vértices opostos de um retângulo e uma
+//     coordenada (a,b) representando um ponto. Identificar se o ponto se encontra dentro do
+//     retângulo.
+
+    //I made this in JS to be able to see a simple representation of the points in the canvas
+
+    //Just some variables init
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d')
+    const v1 = {
+        "x":10,
+        "y":10
+    }; //Default Values
+    const v2 = {
+        "x":100,
+        "y":150
+    }; //Default Values 
+    const point ={
+        "x":Math.floor(Math.random() * 200),
+        "y":Math.floor(Math.random() * 200) 
+    }; //Default Values
+    
+    //Defining some inputs
+    const v1ControlsX = document.getElementById("v1x");
+    v1ControlsX.value = v1.x;
+    const v1ControlsY = document.getElementById("v1y");
+    v1ControlsY.value = v1.y;
+    const v2ControlsX = document.getElementById("v2x");
+    v2ControlsX.value = v2.x;
+    const v2ControlsY = document.getElementById("v2y");
+    v2ControlsY.value = v2.y;
+    const pointControlsX = document.getElementById("px");
+    pointControlsX.value = point.x;
+    const pointControlsY = document.getElementById("py");
+    pointControlsY.value = point.y
+    const result = document.getElementById("result");
+    //Here is where all the logic is
+    function update(){
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        //Inputs
+        v1.x = parseInt(v1ControlsX.value)
+        v1.y = parseInt(v1ControlsY.value)
+        v2.x = parseInt(v2ControlsX.value)
+        v2.y = parseInt(v2ControlsY.value)
+        point.x = parseInt(pointControlsX.value)
+        point.y = parseInt(pointControlsY.value)
+
+        drawRect();
+
+        //Here is where we actually check if the point is inside the rect
+        //If the formula output is between 0 and 1, the point is inside the rect
+        //This formula also work if the vertice 1 is bigger than the vertice 22
+        //even though the visualization only works for positive positions, the calculus still work 
+        // for negative positions
+        let boundX = (point.x - v1.x)/(v2.x - v1.x);
+        let boundY = (point.y - v1.y)/(v2.y - v1.y);
+        if((boundX < 1 && boundX > 0) && (boundY < 1 && boundY > 0)){
+            context.strokeStyle  = "#00b300";
+            result.innerHTML = "is";
+            
+        }else{
+            context.strokeStyle  = "#FF0000";
+            result.innerHTML = "is not";
+        }
+        drawPoint();
+        window.requestAnimationFrame(update);
+    }
+
+
+    function drawPoint(){
+        context.beginPath();
+        context.arc(point.x, point.y, 1, 0, 2 * 3.14);
+        context.stroke();
+    }
+    function drawRect(){
+        context.strokeStyle  = "#FFFFFFF";
+        context.beginPath();
+        context.arc(v1.x, v1.y, 2, 0, 2 * 3.14);
+        context.stroke();
+
+        context.beginPath();
+        context.arc(v2.x, v2.y, 2, 0, 2 * 3.14);
+        context.stroke();
+
+        context.moveTo(v1.x, v1.y);
+        context.lineTo(v1.x, v2.y);
+
+        context.moveTo(v1.x, v2.y);
+        context.lineTo(v2.x, v2.y);
+
+        context.moveTo(v2.x, v2.y);
+        context.lineTo(v2.x, v1.y);
+
+        context.moveTo(v2.x, v1.y);
+        context.lineTo(v1.x, v1.y);
+        context.stroke();
+    }
+    window.requestAnimationFrame(update);
+</script>
+</html>
