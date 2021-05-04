@@ -1,3 +1,4 @@
+
 <form method="get">
     <label for="arr">Array(separed by comma)</label>
     <input type="text" name="arr" id="arr" value='1,2,3,4,5,6'>
@@ -8,7 +9,9 @@
     <input type="submit">
 </form>
 <?php
-
+// Escrever um algoritmo que rotacione um array em k posições. Exemplo: o array
+// [1,2,3,4,5,6] se for girado duas posições para a esquerda se torna [3,4,5,6,1,2].
+// Tente resolver sem usar uma cópia da array.
 if (!empty($_GET)) {
     $arr = explode(",",$_GET['arr']);
     $RTL = !empty($_GET['RTL']);
