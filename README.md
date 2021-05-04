@@ -16,7 +16,7 @@ coordenada (a,b) representando um ponto. Identificar se o ponto se encontra dent
 retângulo.
 
 ## TrianglesFromNumber.php
-4. Receba 6 números representando medidas a,b,c,d,e,f e relacionar quantos e quais triângulos
+Receba 6 números representando medidas a,b,c,d,e,f e relacionar quantos e quais triângulos
 é possível formar usando estas medidas. (para formar um triângulo as soma dos lados mais
 curtos deve ser maior que a medida do lado mais longo) Exemplo de saída [abc], [abd] ....
 
@@ -25,7 +25,7 @@ Um algoritmo deve buscar um sub-texto dentro de um texto fornecido e retornar a 
 de vezes que ele ocorre. (Não usar funções de busca em string).
 
 ## MatrixSort.php
-6. Um algoritmo deve receber uma matriz 3x3 de números e reordená-la de forma crescente
+Um algoritmo deve receber uma matriz 3x3 de números e reordená-la de forma crescente
 linha a linha. Exemplo:
 Entrada
  5 4 3
