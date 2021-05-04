@@ -21,7 +21,7 @@ function search($needle, $haystack){
     $haystackLen = strlen($haystack);
     $buffer = "";
     $occurrences = 0;
-    // $haystackLen - strlen($needle) -1 ignores the last latter becouse there is no way to match the needle there
+    // $haystackLen - strlen($needle) -1 ignores the last latter because there is no way to match the needle there
     for ($i=0; $i <= $haystackLen - strlen($needle); $i++) { 
 
         if ($haystack[$i] == $needle[0]) {
