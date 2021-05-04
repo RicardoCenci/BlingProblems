@@ -9,8 +9,11 @@
 // Um algoritmo deve buscar um sub-texto dentro de um texto fornecido e retornar a quantidade
 // de vezes que ele ocorre. (Não usar funções de busca em string). 
 
-if (!empty($_GET)) {
+if (!empty($_GET['needle']) and !empty($_GET['haystack'])) {
     echo "There was ".search($_GET['needle'], $_GET['haystack'])." occurrences of the pattern ' {$_GET['needle']} ' in the text";
+}else{
+    echo "Please input all the required fields";
+    exit();
 }
 
 function search($needle, $haystack){
