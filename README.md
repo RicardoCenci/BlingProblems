@@ -3,12 +3,12 @@ My personal resolution of the algorithm problems from Bling internship exam
 
 ## ArrayRotate.php
 Escrever um algoritmo que rotacione um array em k posições. Exemplo: o array
-[1,2,3,4,5,6] se for girado duas posições para a esquerda se torna [3,4,5,6,1,2].
+```[1,2,3,4,5,6]``` se for girado duas posições para a esquerda se torna ```[3,4,5,6,1,2]```.
 Tente resolver sem usar uma cópia da array.
 
 ## DateDifference.php
 Escreva um algoritmo que calcule o número de semanas decorridas partir de uma data inicial
-e final recebidos no formato dd/mm/aaaa. Não deve usar funções de data e hora.
+e final recebidos no formato **dd/mm/aaaa**. Não deve usar funções de data e hora.
 
 ## CheckPointInRect.html
 Receba duas coordenadas (x,y) representando os vértices opostos de um retângulo e uma
@@ -28,16 +28,20 @@ de vezes que ele ocorre. (Não usar funções de busca em string).
 Um algoritmo deve receber uma matriz 3x3 de números e reordená-la de forma crescente
 linha a linha. Exemplo:
 Entrada
- 5 4 3
- 8 6 7
- 2 1 0
+```
+5 4 3
+8 6 7 
+2 1 0
+ ```
+ 
  
  Saída
- 0 1 2
- 3 4 5
- 6 7 8
- 
+ ```
+0 1 2
+3 4 5
+6 7 8
+ ```
  ## BasicCrypt.php
 Um algoritmo deve ler uma sequência de 10 caracteres como uma chave representando os
 dígitos de 0 a 9, depois deve ler um número e apresentá-lo cifrado com esta chave. Exemplo:
-chave “abcdefghij” número “123,40” saída “bcd,ea” 
+chave “abcdefghij” número “123,40” saída “bcd,ea”
